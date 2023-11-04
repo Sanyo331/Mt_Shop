@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
-import { Pagination } from './models/pagination';
-import { Product } from './models/product';
+import { Pagination } from './shared/models/pagination';
+import { Product } from './shared/models/product';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +25,6 @@ export class AppComponent implements OnInit{
         console.log('extra statment');
       }
     })
+  
   }
 }
