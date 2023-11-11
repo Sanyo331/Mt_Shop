@@ -11,16 +11,11 @@ import { ShopRoutingModule } from './shop-routing.module';
   declarations: [
     ShopComponent,
     ProductItemComponent,
-    ProductItemComponent,
     ProductDetailsComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
-  ],
-  exports: [
-    ShopComponent,
     ShopRoutingModule
   ]
 })
