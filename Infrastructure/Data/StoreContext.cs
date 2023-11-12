@@ -2,6 +2,7 @@ using System.Reflection;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using Core.Entities.OrderAggregate;
 
 namespace Infrastructue.Data
 {
@@ -17,6 +18,9 @@ namespace Infrastructue.Data
 
         public DbSet<ProductType> ProductTypes {get; set;}
 
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

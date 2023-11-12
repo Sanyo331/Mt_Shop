@@ -1,12 +1,13 @@
 using System.Text.Json;
 using Core.Entities;
+using Core.Entities.OrderAggregate;
 using Infrastructue.Data;
 
 namespace Infrastructure.Data
 {
     public class StoreContextSeed
     {
-        public static async Task SeeedAsync(StoreContext context)
+        public static async Task SeedAsync(StoreContext context)
         {
             if (!context.ProductBrands.Any())
             {
@@ -14,14 +15,12 @@ namespace Infrastructure.Data
                 var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
                 context.ProductBrands.AddRange(brands);
             }
-
             if (!context.ProductTypes.Any())
             {
                 var typesData = File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
                 var types = JsonSerializer.Deserialize<List<ProductType>>(typesData);
                 context.ProductTypes.AddRange(types);
             }
-
             if (!context.Products.Any())
             {
                 var productsData = File.ReadAllText("../Infrastructure/Data/SeedData/products.json");
@@ -29,13 +28,14 @@ namespace Infrastructure.Data
                 context.Products.AddRange(products);
             }
 
-            if (context.ChangeTracker.HasChanges())
+            if (!context.DeliveryMethods.Any())
             {
-                await context.SaveChangesAsync();
+                var deliveryData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
+                var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryData);
+                context.DeliveryMethods.AddRange(methods);
             }
+
+            if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
         }
-            
-
-
     }
 }
