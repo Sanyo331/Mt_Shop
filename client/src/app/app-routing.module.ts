@@ -14,6 +14,10 @@ const routes: Routes = [
   {path: 'basket', loadChildren: () => import('./basket/basket.module').then(m => m.BasketModule)},
   {path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule)},
   {path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule)},
+  {
+    path: 'orders', 
+    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
+  },
   {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 @NgModule({
